@@ -7,6 +7,7 @@ class Transaction{
   final String custome_name;
   final double price;
   final int amount;
+  final String phone;
   final DateTime date;
 
   Transaction({
@@ -14,6 +15,7 @@ class Transaction{
   @required this.custome_name,
   @required  this.amount,
   @required  this.price,
+  @required this.phone,
   @required  this.date});
   
 }

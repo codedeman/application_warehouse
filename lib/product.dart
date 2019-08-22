@@ -23,12 +23,22 @@ class ProductPage extends StatelessWidget{
     custome_name: "Nguyen Thanh Ha",
     price: 3.0,
     amount: 30,
+    phone: "32342",
     date: DateTime.now()),
     Transaction(
     product_name: "P672",
-    custome_name: "Nguyen Thanh Ha",
+    custome_name: "Chich xong xoc",
+    price: 300,
+    amount: 30,
+    phone: "0365763737",
+    date: DateTime.now()),
+
+    Transaction(
+    product_name: "276",
+    custome_name: "Best xl",
     price: 3.0,
     amount: 30,
+    phone: "11343",
     date: DateTime.now())
     
   
@@ -42,11 +52,16 @@ class ProductPage extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Text('Product'),
+      
       ),
-      body: Column(children: <Widget>[
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+
         Container(
           
-          color: Colors.blue,
+          color: Colors.purple,
+          
           child: Card(
             child: Text("Danh sach san pham"),
             elevation: 5,
@@ -54,10 +69,76 @@ class ProductPage extends StatelessWidget{
         
         
         ),
+     
+            Column(
+            children: transaction.map((tx) {
+              return Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
+                          width: 2,
+                        ),
+                      ),
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        tx.product_name,
+                        // '\$${tx.price}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple,
+                        ),
+                      ),
+                    ),
 
-       
-        
-           
+
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          '${tx.price}vnd',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          // DateFormat.yMMMd().format(tx.date),
+                          tx.custome_name,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            
+                          ),
+                        ),
+                        Text(
+                          tx.phone,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.black
+                            ),
+                        
+                        )
+                      ],
+                    ),
+
+                    //  
+
+                    
+
+                  ],
+                ),
+              );
+            }).toList(),
+            
+          ),
 
           
 
