@@ -36,6 +36,9 @@ LoginPage({Key key, this.title}):super(key:key);
 }
 
 class LoginPageState extends State<LoginPage>{
+
+  String userName;
+  String passWord;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -51,19 +54,19 @@ class LoginPageState extends State<LoginPage>{
         Container(
 
           width: double.infinity,
-          child: Card(
+          child:Image.asset('./logobrand.png')
             
-            child: Text('MC Store'),
-            elevation: 5,
+            // child: Text('MC Store'),
+            // elevation: 5,
           
-          ),
+          
           
           
         ),
         
 
         new Card(
-          elevation:  5,
+          // elevation:  5,
           child: Container(
             padding: EdgeInsets.all(10),
             child: Column(
@@ -74,7 +77,10 @@ class LoginPageState extends State<LoginPage>{
                   
                   ),
 
-                  TextField(decoration: InputDecoration(labelText: 'Pass Word'),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Pass Word'),
+                    onChanged: (val)=>passWord = val,
+
                   ),
 
                 ButtonTheme(
@@ -85,7 +91,9 @@ class LoginPageState extends State<LoginPage>{
                         color: Colors.red,
                         child: Text('Login'),
                         textColor: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          print(passWord);
+                        },
                       ),
                   
                    )
