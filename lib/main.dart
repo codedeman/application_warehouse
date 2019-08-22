@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/transaction.dart';
-// import 'package:flutter_app/login.dart';
+import 'package:flutter_app/login.dart';
 
 // Future main() async {
 //   runApp(LoginPage());
 // }
 
-void main() => runApp(new MyApp());
+void main() => runApp(new LoginTransaction());
 
 
 
@@ -113,18 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _startAddNewTransaction(BuildContext ctx) {
-    showModalBottomSheet(
-      context: ctx,
-      builder: (_) {
-        return GestureDetector(
-          onTap: () {},
-          child: NewTransaction(_addNewTransaction),
-          behavior: HitTestBehavior.opaque,
-        );
-      },
-    );
-  }
 
 
 
@@ -175,6 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           body: new Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch ,
             children: <Widget>[
               new ListTile(
                 leading: const Icon(Icons.person),
@@ -239,7 +228,7 @@ class _MyHomePageState extends State<MyHomePage> {
               
               Column(children: <Widget>[
                 
-              ],)               
+              ],) ,             
               ButtonTheme(
                   minWidth: 300.0,
                   height: 40.0,
