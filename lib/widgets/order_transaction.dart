@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/transaction.dart';
 
 import '../product.dart';
+
 
 
 class  CustomerOrder extends StatelessWidget{
@@ -15,6 +18,8 @@ class  CustomerOrder extends StatelessWidget{
         primarySwatch: Colors.green,
       ),
       home: OrderPage(title: "Full up the the storage"),
+            // home: OrderPage(title: "Full up"),
+
     );
   }
 
@@ -22,8 +27,12 @@ class  CustomerOrder extends StatelessWidget{
 }
 class OrderPage extends StatefulWidget{
 
+  final Function addTx;
+
+  // OrderPage(this.addTx);
+
   final String title;
-  OrderPage({Key key,this.title}):super(key:key);
+  OrderPage({Key key,this.title,this.addTx}):super(key:key);
 
   @override
   OrderPageState createState() => new OrderPageState();
@@ -39,20 +48,39 @@ class OrderPageState extends State<OrderPage>{
 
   final List<Transaction> _userTransactions = [];
 
-      final customer = TextEditingController();
+      final _customerController = TextEditingController();
 
-      final phone = TextEditingController();
-      final product = TextEditingController();
-      final price = TextEditingController();
-      final amount = TextEditingController();
+      final _phoneController = TextEditingController();
+      final _productController = TextEditingController();
+      final _priceController = TextEditingController();
+      final _amountController = TextEditingController();
 
       _pushOrderInfor(){
 
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Product()),
+              MaterialPageRoute(builder: (context) => ProductTransaction()),
             );          
       }
+
+  //    _submitData() {
+  //       if (_amountController.text.isEmpty) {
+  //         return;
+  //       }
+  //       // final enteredTitle = _titleController.text;
+  //       final entered_AmountController = int.parse(_amountController.text);
+
+  //       if (entered_AmountController <= 0 ) {
+  //         return;
+  //       }
+
+  //       widget.addTx(
+          
+  //         entered_AmountController,
+  //       );
+
+  //       Navigator.of(context).pop();
+  // }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -61,7 +89,7 @@ class OrderPageState extends State<OrderPage>{
        appBar: new AppBar(
             // Here we take the value from the MyHomePage object that was created by
             // the App.build method, and use it to set our appbar title.
-            title: new Text(widget.title),
+            // title: new Text(widget.title),
             actions: <Widget>[
               new IconButton(icon: const Icon(Icons.save), onPressed: () {})
             ],
@@ -72,18 +100,20 @@ class OrderPageState extends State<OrderPage>{
               new ListTile(
                 leading: const Icon(Icons.person),
                 title: new TextField(
-                  controller: customer,
+                  controller: _customerController,
                   decoration: new InputDecoration(
                     hintText: "Name",
+                    
                   ),
+                
                 ),
               ),
               new ListTile(
                 leading: const Icon(Icons.phone),
                 title: new TextField(
-                  controller: phone,
+                  controller: _phoneController,
                   decoration: new InputDecoration(
-                    hintText: "Phone",
+                    hintText: "phone",
                   ),
                 ),
               ),
@@ -91,11 +121,11 @@ class OrderPageState extends State<OrderPage>{
                   leading: const Icon(Icons.insert_emoticon),
 
                 title: new TextField(
-                  controller: product,
+                  controller: _productController,
 
                   decoration: new InputDecoration(
                     
-                    hintText: "Product",
+                    hintText: "product",
                   ),
                 ),
               ),
@@ -103,9 +133,9 @@ class OrderPageState extends State<OrderPage>{
               new ListTile(
                 leading: const Icon(Icons.attach_money),
                 title: new TextField(
-                  controller: price,
+                  controller: _priceController,
                   decoration: new InputDecoration(
-                    hintText: "Price",
+                    hintText: "price",
                   ),
                 ),
               ),
@@ -113,7 +143,7 @@ class OrderPageState extends State<OrderPage>{
                   leading: const Icon(Icons.local_taxi),
 
                 title: new TextField(
-                  controller: amount,
+                  controller: _amountController,
 
                   decoration: new InputDecoration(
                     hintText: "amount",
@@ -150,7 +180,17 @@ class OrderPageState extends State<OrderPage>{
                   
                   child: RaisedButton(
                     onPressed: (){
-                      _pushOrderInfor()
+
+                      // print(_phoneController);
+
+                      // _submitData();
+                      // log(phoneController);
+                          // print("First text field: $phoneController");
+                          // print("First text field: $_amountController");
+                      //    Scaffold.of(context)
+                      // .showSnackBar(SnackBar(content: Text('Processing Data')));
+
+                        _pushOrderInfor();
                     },
                     child: Text("ADD PRODUCT"),
                     textColor: Colors.white

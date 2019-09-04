@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/transaction.dart';
 
 
-class Product extends StatelessWidget{
+class ProductTransaction extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      title: 'Product',
-      home: ProductPage(),
+      
+      title: 'ProductTransaction',
+      home: ProductTransactionPage(),
+      
 
     );
   }
@@ -16,30 +18,41 @@ class Product extends StatelessWidget{
 
 }
 
-class ProductPage extends StatelessWidget{
+class ProductTransactionPage extends StatelessWidget{
   final List<Transaction> transaction = [
-    Transaction(
-    product_name: "P672",
-    custome_name: "Nguyen Thanh Ha",
-    price: 3.0,
-    amount: 30,
-    phone: "32342",
-    date: DateTime.now()),
-    Transaction(
-    product_name: "P672",
-    custome_name: "Chich xong xoc",
-    price: 300,
-    amount: 30,
-    phone: "0365763737",
-    date: DateTime.now()),
 
     Transaction(
-    product_name: "276",
-    custome_name: "Best xl",
-    price: 3.0,
-    amount: 30,
-    phone: "11343",
-    date: DateTime.now())
+      product_name: "kakak",
+      custome_name: "Ksjjd",
+      price: 3.0,
+      phone: "123131",
+      amount: 2,
+      date: DateTime.now()
+    
+    
+    )
+    // Transaction(
+    // product_name: "P672",
+    // custome_name: "Nguyen Thanh Ha",
+    // price: 3.0,
+    // amount: 30,
+    // phone: "32342",
+    // date: DateTime.now()),
+    // Transaction(
+    // product_name: "P672",
+    // custome_name: "Chich xong xoc",
+    // price: 300,
+    // amount: 30,
+    // phone: "0365763737",
+    // date: DateTime.now()),
+
+    // Transaction(
+    // product_name: "276",
+    // custome_name: "Best xl",
+    // price: 3.0,
+    // amount: 30,
+    // phone: "11343",
+    // date: DateTime.now())
     
   
   ];
@@ -48,15 +61,40 @@ class ProductPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    var text = Text('hellp');
+
+    // var  _backbutton = Icon()
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product'),
+        title: Text('ProductTransaction'),
+
+        
+        actions: <Widget>[
+
+          Expanded(
+
+            
+            
+          child: Row(children: <Widget>[
+
+            Align(
+              
+              alignment: Alignment.centerLeft,
+              child: Icon(Icons.backup)
+              
+            ,)
+          ],)
+          
+        
+
+          )
+        ],
       
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+
+          // Expanded(child: ,)
 
         Container(
           
@@ -66,6 +104,8 @@ class ProductPage extends StatelessWidget{
             child: Text("Danh sach san pham"),
             elevation: 5,
           )
+
+          
         
         
         ),
