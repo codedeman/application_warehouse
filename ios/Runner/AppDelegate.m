@@ -1,5 +1,8 @@
 #include "AppDelegate.h"
 #include "GeneratedPluginRegistrant.h"
+@import UIKit;
+#import <Firebase/Firebase.h>
+
 
 @implementation AppDelegate
 

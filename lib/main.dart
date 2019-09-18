@@ -9,7 +9,7 @@ import 'models/transaction.dart';
 //   runApp(LoginPage());
 // }
 
-void main() => runApp(new CustomerOrder());
+void main() => runApp(new LoginTransaction());
 
 // void main() => runApp(new LoginTransaction());
 

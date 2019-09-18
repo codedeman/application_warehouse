@@ -63,24 +63,7 @@ class OrderPageState extends State<OrderPage>{
             );          
       }
 
-  //    _submitData() {
-  //       if (_amountController.text.isEmpty) {
-  //         return;
-  //       }
-  //       // final enteredTitle = _titleController.text;
-  //       final entered_AmountController = int.parse(_amountController.text);
-
-  //       if (entered_AmountController <= 0 ) {
-  //         return;
-  //       }
-
-  //       widget.addTx(
-          
-  //         entered_AmountController,
-  //       );
-
-  //       Navigator.of(context).pop();
-  // }
+  
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

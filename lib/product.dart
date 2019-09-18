@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/transaction.dart';
+import 'package:flutter_app/widgets/order_transaction.dart';
 
 
 class ProductTransaction extends StatelessWidget{
@@ -30,36 +31,45 @@ class ProductTransactionPage extends StatelessWidget{
       date: DateTime.now()
     
     
-    )
-    // Transaction(
-    // product_name: "P672",
-    // custome_name: "Nguyen Thanh Ha",
-    // price: 3.0,
-    // amount: 30,
-    // phone: "32342",
-    // date: DateTime.now()),
-    // Transaction(
-    // product_name: "P672",
-    // custome_name: "Chich xong xoc",
-    // price: 300,
-    // amount: 30,
-    // phone: "0365763737",
-    // date: DateTime.now()),
+    ),
+    Transaction(
+    product_name: "P672",
+    custome_name: "Nguyen Thanh Ha",
+    price: 3.0,
+    amount: 30,
+    phone: "32342",
+    date: DateTime.now()),
+    Transaction(
+    product_name: "P672",
+    custome_name: "Chich xong xoc",
+    price: 300,
+    amount: 30,
+    phone: "0365763737",
+    date: DateTime.now()),
 
-    // Transaction(
-    // product_name: "276",
-    // custome_name: "Best xl",
-    // price: 3.0,
-    // amount: 30,
-    // phone: "11343",
-    // date: DateTime.now())
+    Transaction(
+    product_name: "276",
+    custome_name: "Best xl",
+    price: 3.0,
+    amount: 30,
+    phone: "11343",
+    date: DateTime.now())
     
   
   ];
 
+  
 
   @override
   Widget build(BuildContext context) {
+    _backHome(){
+        Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CustomerOrder()),
+        );    
+
+    }
+      
     // TODO: implement build
 
     // var  _backbutton = Icon()
@@ -79,9 +89,37 @@ class ProductTransactionPage extends StatelessWidget{
             Align(
               
               alignment: Alignment.centerLeft,
-              child: Icon(Icons.backup)
+              child: IconButton(
+                icon: Icon(Icons.backspace),
+
+                onPressed: (){
+
+                  _backHome();
+
+                },
+               )
+              
+            ,),
+
+
+            Align(
+              
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                icon: Icon(Icons.find_in_page),
+
+                onPressed: (){
+
+
+
+                },
+
+
+
+               )
               
             ,)
+            
           ],)
           
         
@@ -98,7 +136,6 @@ class ProductTransactionPage extends StatelessWidget{
 
         Container(
           
-          color: Colors.purple,
           
           child: Card(
             child: Text("Danh sach san pham"),
@@ -169,7 +206,12 @@ class ProductTransactionPage extends StatelessWidget{
                       ],
                     ),
 
-                    //  
+                    // FloatingActionButton(
+                      
+                    //   child: Icon(Icons.add), 
+                      
+                    //   onPressed: () {},)
+
 
                     
 

@@ -1,117 +1,96 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/product.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
-class LoginTransaction extends StatelessWidget{
- @override
-    Widget build(BuildContext context) {
-      return new MaterialApp(
-
-        title: 'Login',
-        theme: new ThemeData(
-
-          primarySwatch: Colors.blue,
-        ),
-        home: new LoginPage(title: "Login"),
-      );
-
-      }
-
-  
-}
-
-class LoginPage extends StatefulWidget {
- 
-LoginPage({Key key, this.title}):super(key:key);
-
-  final String title;
-
-  @override
-  LoginPageState createState() => new LoginPageState();
-  // State<StatefulWidget> createState() {
-  //   // TODO: implement createState
-  //   return ;
-  // }
-
-
-}
-
-class LoginPageState extends State<LoginPage>{
-
-  String userName;
-  String passWord;
+class  LoginTransaction extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(appBar: new AppBar(
-      title:  new Text("Login Page"),
-    
-    ) ,
-    
-    body: new Column(
-      crossAxisAlignment:  CrossAxisAlignment.center,
-      
-      children: <Widget>[
-        Container(
+    return MaterialApp(
+      title: 'Order',
+      theme: new ThemeData(
 
-          width: double.infinity,
-          child:Image.asset('./logobrand.png')
-            
-            // child: Text('MC Store'),
-            // elevation: 5,
-          
-          
-          
-          
-        ),
-        
+        primarySwatch: Colors.green,
+      ),
+      home: LoginPage(),
+      // home: OrderPage(title: "Full up"),
 
-        new Card(
-          // elevation:  5,
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-
-                  TextField(decoration: InputDecoration(labelText: 'User Name'),
-                  
-                  ),
-
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Pass Word'),
-                    onChanged: (val)=>passWord = val,
-
-                  ),
-
-                ButtonTheme(
-                  minWidth: 300.0,
-                  height: 40.0,
-                  buttonColor:Colors.red,
-                  child:FlatButton(
-                        color: Colors.red,
-                        child: Text('Login'),
-                        textColor: Colors.white,
-                        onPressed: () {
-                          print(passWord);
-                        },
-                      ),
-                  
-                   )
-
-                 
-
-
-              ],
-            ),
-          
-          ),
-
-        )
-      ],
-    ),
-    
     );
   }
 
+
+}
+
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => new _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String _email, _password;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(),
+      body: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                validator: (input) {
+                  if(input.isEmpty){
+                    return 'Provide an email';
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Email'
+                ),
+                onSaved: (input) => _email = input,
+              ),
+              TextFormField(
+                validator: (input) {
+                  if(input.length < 6){
+                    return 'Longer password please';
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Password'
+                ),
+                onSaved: (input) => _password = input,
+                obscureText: true,
+              ),
+              RaisedButton(
+                onPressed: signIn,
+                child: Text('Sign in'),
+              ),
+            ],
+          )
+      ),
+    );
+  }
+
+  void signIn() async {
+    if(_formKey.currentState.validate()){
+      _formKey.currentState.save();
+      try{
+        FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+        _pushOrderInfor();
+      }catch(e){
+        print(e.message);
+      }
+    }
+  }
+
+  _pushOrderInfor(){
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ProductTransaction()),
+    );
+  }
 
 }
